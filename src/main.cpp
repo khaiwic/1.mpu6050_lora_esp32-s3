@@ -15,5 +15,5 @@ void setup(){
     Serial.println("Bat dau khoi dong chuong trinh"); 
 
     //Start MPU
-
+    //calib
 }
