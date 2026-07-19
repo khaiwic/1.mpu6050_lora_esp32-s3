@@ -1,0 +1,16 @@
+# 🧠 MPU Library
+
+Thư mục này chứa header và định nghĩa cho thư viện điều khiển MPU6050.
+
+## 📄 Nội dung chính
+- [MPU.h](MPU.h): khai báo class `mpu_6050`, struct `data_mpu` và cấu trúc Kalman
+
+## ✅ Chức năng
+- Khởi tạo giao tiếp I2C với MPU6050
+- Đọc dữ liệu gia tốc, gyroscope và nhiệt độ
+- Thực hiện calibration ban đầu
+- Tính toán góc Roll và Pitch sau khi lọc Kalman
+
+## ⚠️ Lưu ý
+- Thư viện này được dùng bởi file chính trong [src](../../../src) để lấy dữ liệu cảm biến
+- Nếu cần thay đổi tham số Kalman hoặc số mẫu calibration, hãy chỉnh trong header hoặc file nguồn tương ứng

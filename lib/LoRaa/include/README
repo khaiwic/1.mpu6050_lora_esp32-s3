@@ -1,0 +1,15 @@
+# 📡 LoRa Library
+
+Thư mục này chứa header cho module truyền dữ liệu SX1278 LoRa.
+
+## 📄 Nội dung chính
+- [LoRa_d.h](LoRa_d.h): khai báo class `LoraTxDriver` dùng để khởi động module LoRa và gửi packet
+
+## ✅ Chức năng
+- Khởi tạo SPI và thiết lập module SX1278
+- Gửi dữ liệu từ MPU6050 dưới dạng packet LoRa
+- Đính kèm các thông số như roll, pitch, accel, gyro và nhiệt độ
+
+## ⚠️ Lưu ý
+- Payload được gửi đi mỗi lần đọc dữ liệu từ MPU6050
+- Nếu cần thay đổi định dạng gói dữ liệu, hãy chỉnh phần `Transmission` trong thư viện này
