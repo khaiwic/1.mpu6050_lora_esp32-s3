@@ -10,6 +10,7 @@ namespace Pin_LoRa
     constexpr uint8_t mosi = 0;
     constexpr uint8_t cs = 0;
     constexpr uint8_t dido = 0;
+    constexpr uint8_t rst = 0;
 } // namespace Pin_LoRa
 
 namespace mpu
