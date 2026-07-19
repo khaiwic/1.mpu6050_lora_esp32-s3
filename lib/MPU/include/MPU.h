@@ -32,11 +32,8 @@ struct data_mpu{
     float calib_gy;
     float calib_gz;
 
-    void hanlde_accel();
-    void handle_gyro();
-    int8_t filter_accel(int8_t accel_x, int8_t accel_y, int8_t accel_z);
-    int8_t filter_gyro(int8_t gyro_x, int8_t gyro_y, int8_t gyro_z);
 };
+
 class mpu_6050{
 private:
     uint8_t _sda;
@@ -44,7 +41,7 @@ private:
 public:
     mpu_6050(uint8_t sda_pin, uint8_t scl_pin);
     void init_mpu_6050();
-    void hanlde_data();
+    data_mpu handle_data();
     data_mpu read_data();
     void calibration();
 };
