@@ -10,7 +10,7 @@
 #define ACCEL_XOUT_H 0x3B
 
 //sample to calib 
-#define sample 1000
+#define samples 1000
 
 struct data_mpu{
     //accel data
@@ -42,7 +42,7 @@ private:
     uint8_t _sda;
     uint8_t _sck;
 public:
-    mpu_6050();
+    mpu_6050(uint8_t sda_pin, uint8_t scl_pin);
     void init_mpu_6050();
     void hanlde_data();
     data_mpu read_data();
