@@ -1,3 +1,6 @@
+#ifndef PINCONFIG_H
+#define PINCONFIG_H
+
 #include <Arduino.h>
 
 namespace Pin_LoRa
@@ -13,4 +16,6 @@ namespace mpu
 {
    constexpr uint8_t sda = 0;
    constexpr uint8_t sck = 0; 
-} // namespace name
+} // namespace mpu
+
+#endif // PINCONFIG_H
