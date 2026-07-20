@@ -16,8 +16,15 @@ void setup(){
     Serial.println("Khoi dong thanh cong");
 
     Serial.println("Bat dau khoi dong chuong trinh");
+    Serial.printf("Using MPU6050 I2C pins: SDA=%u, SCL=%u\n", mpu::sda, mpu::sck);
 
-    mpuSensor.init_mpu_6050();
+    if (!mpuSensor.init_mpu_6050()) {
+        Serial.println("MPU6050 init failed. Check wiring and I2C pins.");
+        while (true) {
+            delay(1000);
+        }
+    }
+
     mpuSensor.calibration();
     lora.init_sx1278();
 }

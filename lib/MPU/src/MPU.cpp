@@ -22,14 +22,30 @@ mpu_6050::mpu_6050(uint8_t sda_pin, uint8_t scl_pin)
       timer(0) {
 }
 
-void mpu_6050::init_mpu_6050(){
+bool mpu_6050::init_mpu_6050(){
     Wire.begin(_sda, _sck);
+    Wire.setClock(400000L);
+    delay(100);
+
+    Wire.beginTransmission(MPU_ADDR);
+    uint8_t error = Wire.endTransmission();
+    if (error != 0) {
+        Serial.printf("MPU6050 not detected at 0x%02X on SDA=%u/SCL=%u (error=%u)\n", MPU_ADDR, _sda, _sck, error);
+        return false;
+    }
+
     Wire.beginTransmission(MPU_ADDR);
     Wire.write(PWR_MGMT_1);
     Wire.write(0);
-    Wire.endTransmission(true);
-    Serial.println("-----MPU_6050 San sang hoat dong ngay bay gio");
+    error = Wire.endTransmission();
+    if (error != 0) {
+        Serial.printf("MPU6050 wake-up failed (error=%u)\n", error);
+        return false;
+    }
+
+    Serial.printf("MPU6050 ready on SDA=%u/SCL=%u\n", _sda, _sck);
     delay(500);
+    return true;
 }
 
 data_mpu mpu_6050::read_data(){
@@ -111,7 +127,7 @@ void mpu_6050::calibration(){
         Wire.beginTransmission(MPU_ADDR);
         Wire.write(ACCEL_XOUT_H);
         Wire.endTransmission(false);
-        Wire.requestFrom(MPU_ADDR, 14, true);
+        Wire.requestFrom(static_cast<uint8_t>(MPU_ADDR), static_cast<uint8_t>(14), true);
 
         a = Wire.read() << 8 | Wire.read();
         b = Wire.read() << 8 | Wire.read();

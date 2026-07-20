@@ -73,7 +73,7 @@ private:
     unsigned long timer;
 public:
     mpu_6050(uint8_t sda_pin, uint8_t scl_pin);
-    void init_mpu_6050();
+    bool init_mpu_6050();
     data_mpu handle_data();
     data_mpu read_data();
     void calibration();
