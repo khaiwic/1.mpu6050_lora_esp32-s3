@@ -4,10 +4,27 @@
 #include <WiFiClientSecure.h>
 #include <PubSubClient.h>
 
-const char *id = "TP-Link p301";
-const char *password = "p301p301p301";
+#include "receive.h"
+#include "WF.h"
+#include "mqtt.h"
 
-const char* mqtt_server = "aa9d8788a7654eb88cb3246e1e8b4e6e.s1.eu.hivemq.cloud";
-const int mqtt_port = 8883;
-const char* mqtt_user = "khaideptrai13907@gmail.com";
-const char* mqtt_pass = "Khai@123";
+void setup(){
+    Serial.begin(115200);
+    delay(115200);
+
+    Serial.println("Khoi dong thanh cong Serial.");
+
+    WF::setup_wifi();
+    Serial.println("Cau hinh thanh cong WiFi");
+    MQTT::setup_routes();
+    Serial.println("Cau hinh thanh cong MQTT");
+    MQTT::connect_brocker();
+    Serial.println("ket noi thanh cong voi Brocker");
+    receive::initLr();
+
+    
+}
+
+void loop(){
+
+}
