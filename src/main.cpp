@@ -22,9 +22,12 @@ void setup(){
     Serial.println("ket noi thanh cong voi Brocker");
     receive::initLr();
 
+    receive::checking_route();
+
     
 }
 
 void loop(){
-
+    receive::receive_data();
+    delay(10);
 }

@@ -6,8 +6,11 @@
 #include <SPI.h>
 #include "../../../include/pinconfig.h"
 
-namespace receive {
-    void initLr();
-}
+class receive {
+public:
+    static void initLr();
+    static String receive_data();
+    static void checking_route();
+};
 
 #endif
