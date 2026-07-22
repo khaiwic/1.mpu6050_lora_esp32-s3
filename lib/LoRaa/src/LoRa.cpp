@@ -8,12 +8,12 @@
 unsigned long LoraTxDriver::packetCounter = 0;
 
 LoraTxDriver::LoraTxDriver(int16_t sck, int16_t mosi, int16_t miso, int16_t dido, int16_t rst, int16_t nss){
-    _sck = Pin_LoRa::sclk;
-    _mosi = Pin_LoRa::mosi;
-    _miso = Pin_LoRa::miso;
-    _nss = Pin_LoRa::cs;
-    _dido = Pin_LoRa::dido;
-    _rst = Pin_LoRa::rst;
+    _sck = sck;
+    _mosi = mosi;
+    _miso = miso;
+    _nss = nss;
+    _dido = dido;
+    _rst = rst;
 }
 
 void LoraTxDriver::init_sx1278(){

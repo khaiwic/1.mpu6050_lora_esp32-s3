@@ -7,7 +7,7 @@
 #include <MPU.h>
 #include "LoRa_d.h"
 
-mpu_6050 mpuSensor(mpu::sda, mpu::sck);
+mpu_6050 mpuSensor(mpu::sda, mpu::scl);
 LoraTxDriver lora(Pin_LoRa::sclk, Pin_LoRa::mosi, Pin_LoRa::miso, Pin_LoRa::dido, Pin_LoRa::rst, Pin_LoRa::cs);
 
 void setup(){
@@ -16,7 +16,7 @@ void setup(){
     Serial.println("Khoi dong thanh cong");
 
     Serial.println("Bat dau khoi dong chuong trinh");
-    Serial.printf("Using MPU6050 I2C pins: SDA=%u, SCL=%u\n", mpu::sda, mpu::sck);
+    Serial.printf("Using MPU6050 I2C pins: SDA=%u, SCL=%u\n", mpu::sda, mpu::scl);
 
     if (!mpuSensor.init_mpu_6050()) {
         Serial.println("MPU6050 init failed. Check wiring and I2C pins.");
